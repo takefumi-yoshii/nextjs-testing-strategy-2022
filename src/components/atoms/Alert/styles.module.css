@@ -1,0 +1,15 @@
+.module {
+  padding: 16px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  color: #fff;
+}
+
+.module[data-theme="success"] {
+  background-color: #00c096;
+}
+
+.module[data-theme="fail"] {
+  background-color: #e45476;
+}

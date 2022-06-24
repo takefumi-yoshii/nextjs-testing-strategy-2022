@@ -1,0 +1,13 @@
+.heading {
+  margin-bottom: 36px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+.textbox {
+  margin-bottom: 12px;
+}
+
+.button {
+  margin: 48px 0;
+}

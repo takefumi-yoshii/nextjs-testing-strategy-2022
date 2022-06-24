@@ -1,0 +1,38 @@
+.list {
+  padding-top: 60px;
+}
+
+.list li:first-child {
+  border-top: 1px solid rgb(81, 83, 95);
+}
+
+.link {
+  display: block;
+  padding: 20px 0;
+  font-size: 1.4rem;
+  text-align: center;
+  color: rgb(131, 133, 145);
+  border-bottom: 1px solid rgb(81, 83, 95);
+}
+
+.link:hover {
+  color: rgb(205, 207, 218);
+}
+
+.logout {
+  width: max-content;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+.aside {
+  width: 128px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #343439;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
