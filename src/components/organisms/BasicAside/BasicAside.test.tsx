@@ -7,7 +7,7 @@ import * as stories from "./BasicAside.stories";
 
 const { Default } = composeStories(stories);
 
-describe("src/components/organisms/BasicFooter/BasicFooter.test.tsx", () => {
+describe("src/components/organisms/BasicAside/BasicAside.test.tsx", () => {
   test("[role=complementary]であること", () => {
     const { getByRole } = render(<Default />);
     expect(getByRole("complementary")).toBeInTheDocument();
