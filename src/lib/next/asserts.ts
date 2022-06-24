@@ -6,7 +6,7 @@ function assertPathParam(
   if (typeof queryStringLike !== "string") throw new InvalidPathParamError();
 }
 
-function numericPathParam(
+function assertNumericPathParam(
   queryStringLike: string | string[] | undefined
 ): asserts queryStringLike is string {
   if (
@@ -22,6 +22,6 @@ export function str(queryStringLike: string | string[] | undefined) {
 }
 
 export function num(queryStringLike: string | string[] | undefined) {
-  numericPathParam(queryStringLike);
+  assertNumericPathParam(queryStringLike);
   return queryStringLike;
 }
