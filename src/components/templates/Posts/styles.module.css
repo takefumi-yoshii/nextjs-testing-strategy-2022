@@ -2,18 +2,3 @@
   max-width: 1024px;
   padding: 48px;
 }
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.row {
-  border-bottom: 1px solid #ccc;
-}
-
-.row th,
-.row td {
-  text-align: left;
-  padding: 12px;
-}

@@ -1,5 +1,6 @@
 import { AnchorButton } from "@/components/atoms/AnchorButton";
 import { HeadGroup } from "@/components/molecules/HeadGroup";
+import { Table, Tbody, Td, Th, Tr } from "@/components/molecules/Table";
 import { PostData } from "@/services/api.example.com/posts";
 import Link from "next/link";
 import styles from "./styles.module.css";
@@ -14,22 +15,22 @@ export const Post = ({ post }: Props) => {
           <AnchorButton>編集する</AnchorButton>
         </Link>
       </HeadGroup>
-      <table className={styles.table}>
-        <tbody>
-          <tr className={styles.row}>
-            <th>ID</th>
-            <td>{post.id}</td>
-          </tr>
-          <tr className={styles.row}>
-            <th>title</th>
-            <td>{post.title}</td>
-          </tr>
-          <tr className={styles.row}>
-            <th>publishedAt</th>
-            <td>{post.publishedAt}</td>
-          </tr>
-        </tbody>
-      </table>
+      <Table>
+        <Tbody>
+          <Tr>
+            <Th>ID</Th>
+            <Td>{post.id}</Td>
+          </Tr>
+          <Tr>
+            <Th>title</Th>
+            <Td>{post.title}</Td>
+          </Tr>
+          <Tr>
+            <Th>publishedAt</Th>
+            <Td>{post.publishedAt}</Td>
+          </Tr>
+        </Tbody>
+      </Table>
     </main>
   );
 };

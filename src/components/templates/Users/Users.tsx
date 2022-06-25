@@ -1,6 +1,7 @@
 import { AnchorButton } from "@/components/atoms/AnchorButton";
 import { AnchorText } from "@/components/atoms/AnchorText";
 import { HeadGroup } from "@/components/molecules/HeadGroup";
+import { Table, Tbody, Td, Th, Thead, Tr } from "@/components/molecules/Table";
 import { User } from "@/services/api.example.com/users";
 import Link from "next/link";
 import { useId } from "react";
@@ -13,16 +14,16 @@ type Props = {
 const UserListItem = ({ user }: { user: User }) => {
   const userNameId = useId();
   return (
-    <tr className={styles.row} aria-labelledby={userNameId}>
-      <td>{user.id}</td>
-      <td id={userNameId}>{user.name}</td>
-      <td>{user.email}</td>
-      <td>
+    <Tr aria-labelledby={userNameId}>
+      <Td>{user.id}</Td>
+      <Td id={userNameId}>{user.name}</Td>
+      <Td>{user.email}</Td>
+      <Td>
         <Link href={`/users/${user.id}`}>
           <AnchorText hasArrow={true}>詳細</AnchorText>
         </Link>
-      </td>
-    </tr>
+      </Td>
+    </Tr>
   );
 };
 
@@ -34,21 +35,20 @@ export const Users = ({ users }: Props) => {
           <AnchorButton>新規作成</AnchorButton>
         </Link>
       </HeadGroup>
-      <table className={styles.table}>
-        <thead>
-          <tr className={styles.row}>
-            <th>ID</th>
-            <th>name</th>
-            <th>email</th>
-            <th />
-          </tr>
-        </thead>
-        <tbody>
+      <Table>
+        <Thead>
+          <Tr>
+            <Th>ID</Th>
+            <Th>name</Th>
+            <Th>email</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
           {users.map((user) => (
             <UserListItem key={user.id} user={user} />
           ))}
-        </tbody>
-      </table>
+        </Tbody>
+      </Table>
     </main>
   );
 };

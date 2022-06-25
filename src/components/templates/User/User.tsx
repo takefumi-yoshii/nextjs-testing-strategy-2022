@@ -1,5 +1,6 @@
 import { AnchorButton } from "@/components/atoms/AnchorButton";
 import { HeadGroup } from "@/components/molecules/HeadGroup";
+import { Table, Tbody, Td, Th, Tr } from "@/components/molecules/Table";
 import { User as IUser } from "@/services/api.example.com/users";
 import Link from "next/link";
 import styles from "./styles.module.css";
@@ -16,22 +17,22 @@ export const User = ({ user }: Props) => {
           <AnchorButton>編集する</AnchorButton>
         </Link>
       </HeadGroup>
-      <table className={styles.table}>
-        <tbody>
-          <tr className={styles.row}>
-            <th>ID</th>
-            <td>{user.id}</td>
-          </tr>
-          <tr className={styles.row}>
-            <th>name</th>
-            <td>{user.name}</td>
-          </tr>
-          <tr className={styles.row}>
-            <th>email</th>
-            <td>{user.email}</td>
-          </tr>
-        </tbody>
-      </table>
+      <Table>
+        <Tbody>
+          <Tr>
+            <Th>ID</Th>
+            <Td>{user.id}</Td>
+          </Tr>
+          <Tr>
+            <Th>name</Th>
+            <Td>{user.name}</Td>
+          </Tr>
+          <Tr>
+            <Th>email</Th>
+            <Td>{user.email}</Td>
+          </Tr>
+        </Tbody>
+      </Table>
     </main>
   );
 };
