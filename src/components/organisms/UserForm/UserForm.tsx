@@ -17,7 +17,7 @@ type Props = {
   onValid: (values: Values) => Promise<void>;
 };
 
-const defaultValues = {
+const defaultValues: Values = {
   name: "",
   email: "",
 };
