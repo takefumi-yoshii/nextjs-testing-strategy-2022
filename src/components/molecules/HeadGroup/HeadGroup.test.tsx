@@ -8,10 +8,13 @@ const { Default } = composeStories(stories);
 
 describe("src/components/molecules/HeadGroup/HeadGroup.test.tsx", () => {
   setupMockServer();
+  test("エリア が title 由来のアクセシブルネームで識別できること", () => {
+    const { getByRole } = render(<Default />);
+    expect(getByRole("banner", { name: "タイトル" })).toBeInTheDocument();
+  });
   test("[role=heading]を含むこと", () => {
     const { getByRole } = render(<Default />);
-    const main = getByRole("heading");
-    expect(main).toBeInTheDocument();
+    expect(getByRole("heading")).toBeInTheDocument();
   });
   test("children を render できること", () => {
     const { getByText } = render(<Default>テキスト</Default>);

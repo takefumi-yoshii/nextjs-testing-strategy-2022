@@ -9,9 +9,9 @@ type Props = {
 export const HeadGroup = ({ title, children }: Props) => {
   const headingId = useId();
   return (
-    <section aria-labelledby={headingId} className={styles.headGroup}>
+    <header aria-labelledby={headingId} className={styles.headGroup}>
       <h2 id={headingId}>{title}</h2>
       {children}
-    </section>
+    </header>
   );
 };

@@ -21,7 +21,7 @@ describe("src/components/templates/Top/Top.test.tsx", () => {
     { name: "投稿一覧", asPath: "/posts" },
   ])("$name リンクを押下すると $asPath に遷移する", ({ name, asPath }) => {
     const { getByRole } = render(<Default />);
-    const region = getByRole("region", { name });
+    const region = getByRole("banner", { name });
     userEvent.click(within(region).getByRole("link"));
     expect(singletonRouter).toMatchObject({ asPath });
   });
