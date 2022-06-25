@@ -5,10 +5,5 @@ import type { LoginData, LoginInput } from "./type";
 export const postLoginHandler = restHandlerFactory<LoginInput, {}, LoginData>(
   "post",
   path(),
-  (req, res, ctx) =>
-    res(
-      ctx.json({
-        user: { id: "0", name: "user" },
-      })
-    )
+  (_, res, ctx) => res(ctx.json({ user: { id: "0", name: "user" } }))
 );
