@@ -1,10 +1,10 @@
 import { createPostHandler } from "@/services/api/posts/mock";
 import { setupMockServer } from "@/tests/jest";
 import { storyHandlers } from "@/tests/storybook";
-import { userEvent } from "@storybook/testing-library";
 import { composeStories } from "@storybook/testing-react";
 import "@testing-library/jest-dom";
 import { render, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import singletonRouter from "next/router";
 import * as stories from "./PostsNew.stories";
 import { actualData, typeData } from "./PostsNew.stories";
@@ -13,6 +13,7 @@ const { Default, SucceedPost, ServerError } = composeStories(stories);
 
 describe("src/components/templates/PostsNew/PostsNew.test.tsx", () => {
   const server = setupMockServer(createPostHandler());
+  const user = userEvent.setup();
   test("main ランドマークを1つ識別できること", () => {
     const { getByRole } = render(<Default />);
     const main = getByRole("main");
@@ -24,7 +25,7 @@ describe("src/components/templates/PostsNew/PostsNew.test.tsx", () => {
       server.use(createPostHandler({ mock }));
       const { getByRole } = render(<Default />);
       await typeData(getByRole);
-      userEvent.click(getByRole("button", { name: "送信する" }));
+      await user.click(getByRole("button", { name: "送信する" }));
       await waitFor(() =>
         expect(mock).toHaveBeenCalledWith(expect.objectContaining(actualData))
       );

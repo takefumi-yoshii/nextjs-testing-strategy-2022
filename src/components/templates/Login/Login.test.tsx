@@ -1,15 +1,16 @@
 import { errors } from "@/errors";
 import { postLoginHandler } from "@/services/api/login/mock";
 import { setupMockServer } from "@/tests/jest";
-import { userEvent } from "@storybook/testing-library";
 import { composeStories } from "@storybook/testing-react";
 import "@testing-library/jest-dom";
 import { render, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import * as stories from "./Login.stories";
 
 const { Default } = composeStories(stories);
 
 describe("src/components/templates/Login/Login.test.tsx", () => {
+  const user = userEvent.setup();
   test("main ランドマークを1つ識別できること", () => {
     const { getByRole } = render(<Default />);
     const main = getByRole("main");
@@ -22,9 +23,9 @@ describe("src/components/templates/Login/Login.test.tsx", () => {
     const server = setupMockServer(postLoginHandler({ mock }));
     test("ログインボタンを押下すると、ログインAPIが呼ばれること", async () => {
       const { getByRole, getByLabelText } = render(<Default />);
-      userEvent.type(getByRole("textbox", { name: "メールアドレス" }), email);
-      userEvent.type(getByLabelText("パスワード"), password);
-      userEvent.click(getByRole("button", { name: "ログイン" }));
+      await user.type(getByRole("textbox", { name: "メールアドレス" }), email);
+      await user.type(getByLabelText("パスワード"), password);
+      await user.click(getByRole("button", { name: "ログイン" }));
       await waitFor(() =>
         expect(mock).toHaveBeenCalledWith({ email, password })
       );
@@ -33,9 +34,9 @@ describe("src/components/templates/Login/Login.test.tsx", () => {
       window.alert = jest.fn();
       server.use(postLoginHandler({ err: errors["INTERNAL_SERVER"] }));
       const { getByRole, getByLabelText } = render(<Default />);
-      userEvent.type(getByRole("textbox", { name: "メールアドレス" }), email);
-      userEvent.type(getByLabelText("パスワード"), password);
-      userEvent.click(getByRole("button", { name: "ログイン" }));
+      await user.type(getByRole("textbox", { name: "メールアドレス" }), email);
+      await user.type(getByLabelText("パスワード"), password);
+      await user.click(getByRole("button", { name: "ログイン" }));
       await waitFor(() =>
         expect(window.alert).toHaveBeenCalledWith("ログインに失敗しました")
       );
