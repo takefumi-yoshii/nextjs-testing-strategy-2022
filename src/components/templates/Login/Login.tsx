@@ -18,7 +18,7 @@ export const Login = () => {
   });
   return (
     <main className={styles.main}>
-      <h1>Login</h1>
+      <h2>Login</h2>
       <form
         onSubmit={handleSubmit(async (values) => {
           const { data, err } = await postLogin(values);
