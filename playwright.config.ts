@@ -4,8 +4,8 @@ import path from "path";
 const config: PlaywrightTestConfig = {
   timeout: 30 * 1000,
   testDir: path.join(__dirname, "e2e"),
-  retries: 2,
-  outputDir: "test-results/",
+  retries: 0,
+  outputDir: "__reports__/e2e",
   webServer: {
     command: "npm run dev",
     port: 3000,
