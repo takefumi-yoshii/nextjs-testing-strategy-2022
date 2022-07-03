@@ -7,7 +7,11 @@ const { Default } = composeStories(stories);
 
 describe("src/components/atoms/AnchorText/AnchorText.test.tsx", () => {
   const options = { name: "送信する" };
-  test("[role=link]であること", () => {
+  test("Atom である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeAtom();
+  });
+  test("[role=link]である", () => {
     const { getByRole } = render(<Default />);
     expect(getByRole("link", options)).toBeInTheDocument();
   });

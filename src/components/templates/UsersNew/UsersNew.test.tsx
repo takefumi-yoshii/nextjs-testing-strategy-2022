@@ -13,13 +13,12 @@ const { Default, SucceedPost, ServerError } = composeStories(stories);
 describe("src/components/templates/UsersNew/UsersNew.test.tsx", () => {
   const server = setupMockServer(createUserHandler());
   const user = userEvent.setup();
-  test("main ランドマークを1つ識別できること", () => {
-    const { getByRole } = render(<Default />);
-    const main = getByRole("main");
-    expect(main).toBeInTheDocument();
+  test("Template である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeTemplate();
   });
   describe("入力フォーム", () => {
-    test("正常入力値で送信すると、API が呼ばれること", async () => {
+    test("正常入力値で送信すると、API が呼ばれる", async () => {
       const mock = jest.fn();
       server.use(createUserHandler({ mock }));
       const { getByRole } = render(<Default />);
@@ -29,7 +28,7 @@ describe("src/components/templates/UsersNew/UsersNew.test.tsx", () => {
         expect(mock).toHaveBeenCalledWith(expect.objectContaining(actualData))
       );
     });
-    test("正常入力値で送信した場合、成功した旨が表示されること", async () => {
+    test("正常入力値で送信した場合、成功した旨が表示される", async () => {
       server.use(...storyHandlers(SucceedPost));
       const { container, findByRole } = render(<SucceedPost />);
       await SucceedPost.play({ canvasElement: container });
@@ -37,7 +36,7 @@ describe("src/components/templates/UsersNew/UsersNew.test.tsx", () => {
         "ユーザーの作成に成功しました"
       );
     });
-    test("エラーが返ってきた場合、エラーが表示されること", async () => {
+    test("エラーが返ってきた場合、エラーが表示される", async () => {
       server.use(...storyHandlers(ServerError));
       const { container, findByRole } = render(<ServerError />);
       await ServerError.play({ canvasElement: container });

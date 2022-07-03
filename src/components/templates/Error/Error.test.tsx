@@ -6,8 +6,8 @@ import * as stories from "./Error.stories";
 const { Default } = composeStories(stories);
 
 describe("src/components/templates/Error/Error.test.tsx", () => {
-  test("main ランドマークを1つ識別できること", () => {
-    const { getByRole } = render(<Default />);
-    expect(getByRole("main")).toBeInTheDocument();
+  test("Template である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeTemplate();
   });
 });

@@ -6,7 +6,11 @@ import * as stories from "./Textarea.stories";
 const { Default } = composeStories(stories);
 
 describe("src/components/atoms/Textarea/Textarea.test.tsx", () => {
-  test("[role=textbox]であること", () => {
+  test("Atom である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeAtom();
+  });
+  test("[role=textbox]である", () => {
     const { getByRole } = render(<Default />);
     expect(getByRole("textbox")).toBeInTheDocument();
   });

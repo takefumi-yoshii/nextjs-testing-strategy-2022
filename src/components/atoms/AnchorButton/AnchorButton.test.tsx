@@ -7,11 +7,15 @@ const { Default, Disabled } = composeStories(stories);
 
 describe("src/components/atoms/AnchorButton/AnchorButton.test.tsx", () => {
   const options = { name: "送信する" };
-  test("[role=button]であること", () => {
+  test("Atom である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeAtom();
+  });
+  test("[role=button]である", () => {
     const { getByRole } = render(<Default />);
     expect(getByRole("button", options)).toBeInTheDocument();
   });
-  test("[aria-disabled=true]であること", () => {
+  test("[aria-disabled=true]である", () => {
     const { getByRole } = render(<Disabled />);
     // SEE: https://github.com/testing-library/jest-dom/issues/144
     expect(getByRole("button", options)).toHaveAttribute(
