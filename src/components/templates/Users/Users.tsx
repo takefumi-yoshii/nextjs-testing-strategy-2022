@@ -1,8 +1,10 @@
 import { AnchorButton } from "@/components/atoms/AnchorButton";
 import { AnchorText } from "@/components/atoms/AnchorText";
+import { pageTitle } from "@/components/meta";
 import { HeadGroup } from "@/components/molecules/HeadGroup";
 import { Table, Tbody, Td, Th, Thead, Tr } from "@/components/molecules/Table";
 import { User } from "@/services/api.example.com/users";
+import Head from "next/head";
 import Link from "next/link";
 import { useId } from "react";
 import styles from "./styles.module.css";
@@ -30,6 +32,9 @@ const UserListItem = ({ user }: { user: User }) => {
 export const Users = ({ users }: Props) => {
   return (
     <main className={styles.main}>
+      <Head>
+        <title>{pageTitle("ユーザー一覧")}</title>
+      </Head>
       <HeadGroup title="ユーザー一覧">
         <Link href={`/users/new`}>
           <AnchorButton>新規作成</AnchorButton>
