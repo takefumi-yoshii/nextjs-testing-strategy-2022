@@ -1,6 +1,6 @@
 import { getRoles } from "@testing-library/react";
 
-export interface CustomMatchers<R> extends Record<string, any> {
+interface CustomMatchers<R = unknown> {
   toBeAtom: () => R;
   toBeMolecule: () => R;
   toBeOrganism: () => R;
@@ -9,7 +9,9 @@ export interface CustomMatchers<R> extends Record<string, any> {
 
 declare global {
   namespace jest {
-    interface Matchers<R, T = {}> extends CustomMatchers<R> {}
+    interface Expect extends CustomMatchers {}
+    interface Matchers<R> extends CustomMatchers<R> {}
+    interface InverseAsymmetricMatchers extends CustomMatchers {}
   }
 }
 
