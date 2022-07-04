@@ -6,7 +6,11 @@ import * as stories from "./BasicHeader.stories";
 const { Default } = composeStories(stories);
 
 describe("src/components/organisms/BasicHeader/BasicHeader.test.tsx", () => {
-  test("[role=banner]であること", () => {
+  test("Organism である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeOrganism();
+  });
+  test("[role=banner]である", () => {
     const { getByRole } = render(<Default />);
     expect(getByRole("banner")).toBeInTheDocument();
   });

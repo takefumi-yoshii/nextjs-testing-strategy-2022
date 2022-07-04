@@ -13,6 +13,7 @@ const customJestConfig = {
   moduleDirectories: ["node_modules", "<rootDir>/"],
   testEnvironment: "jest-environment-jsdom",
   setupFiles: ["./jest.setup.js"],
+  setupFilesAfterEnv: ["<rootDir>/src/tests/jest.customMatchers.ts"],
   moduleNameMapper: { "^@/(.*)$": "<rootDir>/src/$1" },
   resolver: "<rootDir>/jest.resolver.js",
   reporters: [

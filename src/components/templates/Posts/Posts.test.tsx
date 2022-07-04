@@ -11,18 +11,17 @@ const { Default } = composeStories(stories);
 describe("src/components/templates/Posts/Posts.test.tsx", () => {
   setupMockServer();
   const user = userEvent.setup();
-  test("main ランドマークを1つ識別できること", () => {
-    const { getByRole } = render(<Default />);
-    const main = getByRole("main");
-    expect(main).toBeInTheDocument();
+  test("Template である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeTemplate();
   });
-  test("「詳細」リンクを押下すると、詳細画面に遷移すること", async () => {
+  test("「詳細」リンクを押下すると、詳細画面に遷移する", async () => {
     const { getByRole } = render(<Default />);
     const row = getByRole("row", { name: "Lorem Ipsum 1" });
     await user.click(within(row).getByRole("link", { name: "詳細" }));
     expect(singletonRouter).toMatchObject({ asPath: "/posts/1" });
   });
-  test("「ユーザー新規作成」ボタンを押下すると、ユーザー新規作成画面に遷移すること", async () => {
+  test("「ユーザー新規作成」ボタンを押下すると、ユーザー新規作成画面に遷移する", async () => {
     const { getByRole } = render(<Default />);
     await user.click(getByRole("button", { name: "新規作成" }));
     expect(singletonRouter).toMatchObject({ asPath: "/posts/new" });

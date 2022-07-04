@@ -6,11 +6,15 @@ import * as stories from "./Textbox.stories";
 const { Default, Spinbutton } = composeStories(stories);
 
 describe("src/components/Textbox/Textbox.test.tsx", () => {
-  test("[role=textbox]であること", () => {
+  test("Atom である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeAtom();
+  });
+  test("[role=textbox]である", () => {
     const { getByRole } = render(<Default />);
     expect(getByRole("textbox")).toBeInTheDocument();
   });
-  test("[role=spinbutton]であること", () => {
+  test("[role=spinbutton]である", () => {
     const { getByRole } = render(<Spinbutton />);
     expect(getByRole("spinbutton")).toBeInTheDocument();
   });
