@@ -23,7 +23,7 @@ describe("src/components/templates/Top/Top.test.tsx", () => {
     "$name リンクを押下すると $asPath に遷移する",
     async ({ name, asPath }) => {
       const { getByRole } = render(<Default />);
-      const region = getByRole("banner", { name });
+      const region = getByRole("region", { name });
       await user.click(within(region).getByRole("link"));
       expect(singletonRouter).toMatchObject({ asPath });
     }
