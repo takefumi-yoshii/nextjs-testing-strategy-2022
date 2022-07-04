@@ -262,11 +262,26 @@ describe("Atoms", () => {
     );
     asserts(container);
   });
-
-  test("<textaresda>(role=textbox)", () => {
+  test("<label>(role=none)", () => {
+    const { container } = render(
+      <label>
+        <input type="checkbox" id="check" />
+        Test
+      </label>
+    );
+    const { container: htmlFor } = render(
+      <>
+        <label htmlFor="check">Test</label>
+        <input type="checkbox" id="check" />
+      </>
+    );
+    asserts(container);
+    asserts(htmlFor);
+  });
+  test("text(role=none)", () => {
     const { container } = render(
       <div>
-        <p>aa</p>
+        <p>test</p>
       </div>
     );
     asserts(container);
