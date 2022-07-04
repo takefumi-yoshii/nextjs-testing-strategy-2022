@@ -1,8 +1,10 @@
 import { Alert } from "@/components/atoms/Alert";
 import { usePortalDispatch } from "@/components/layouts/BasicLayout/PortalContextProvider";
+import { pageTitle } from "@/components/meta";
 import { UserForm } from "@/components/organisms/UserForm";
 import { User } from "@/services/api.example.com/users";
 import { updateUser } from "@/services/api/users/[id]";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 
@@ -15,6 +17,9 @@ export const UserEdit = ({ user }: Props) => {
   const { showPortal } = usePortalDispatch();
   return (
     <main className={styles.main}>
+      <Head>
+        <title>{pageTitle("ユーザー編集")}</title>
+      </Head>
       <UserForm
         title="ユーザー編集"
         initialValues={user}

@@ -15,6 +15,7 @@ const customJestConfig = {
   setupFiles: ["./jest.setup.js"],
   setupFilesAfterEnv: ["<rootDir>/src/tests/jest.customMatchers.ts"],
   moduleNameMapper: { "^@/(.*)$": "<rootDir>/src/$1" },
+  testMatch: ["**/?(*.)+(test).[jt]s?(x)"],
   resolver: "<rootDir>/jest.resolver.js",
   reporters: [
     "default",

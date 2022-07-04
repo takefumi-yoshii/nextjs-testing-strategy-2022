@@ -1,8 +1,10 @@
 import { Button } from "@/components/atoms/Button";
+import { pageTitle } from "@/components/meta";
 import { TextboxWithTitle } from "@/components/molecules/TextboxWithTitle";
 import { postLogin } from "@/services/api/login";
 import { LoginInputSchema } from "@/services/api/login/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Head from "next/head";
 import { useForm } from "react-hook-form";
 import styles from "./styles.module.css";
 
@@ -18,7 +20,10 @@ export const Login = () => {
   });
   return (
     <main className={styles.main}>
-      <h1>Login</h1>
+      <Head>
+        <title>{pageTitle("ログイン")}</title>
+      </Head>
+      <h2>Login</h2>
       <form
         onSubmit={handleSubmit(async (values) => {
           const { data, err } = await postLogin(values);
