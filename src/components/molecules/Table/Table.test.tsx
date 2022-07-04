@@ -9,11 +9,16 @@ const { Default } = composeStories(stories);
 
 describe("src/components/molecules/Table/Table.test.tsx", () => {
   setupMockServer(createUserHandler());
-  test("[role=table]であること", () => {
+
+  test("Molecule である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeMolecule();
+  });
+  test("[role=table]である", () => {
     const { getByRole } = render(<Default />);
     expect(getByRole("table")).toBeInTheDocument();
   });
-  test("aria-label で特定の cell にアクセスできること", () => {
+  test("aria-label で特定の cell にアクセスできる", () => {
     const { getByRole } = render(<Default />);
     const row = within(getByRole("row", { name: "row2" }));
     const cell = row.getByRole("cell", { name: "learnmore" });

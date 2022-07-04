@@ -6,12 +6,16 @@ import * as stories from "./PostForm.stories";
 const { Default, EmptyPost, EditUser } = composeStories(stories);
 
 describe("src/components/organisms/PostForm/PostForm.test.tsx", () => {
-  test("form が title 由来のアクセシブルネームで識別できること", () => {
+  test("Organism である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeOrganism();
+  });
+  test("form が title 由来のアクセシブルネームで識別できる", () => {
     const { getByRole } = render(<Default />);
     const form = getByRole("form", { name: "投稿作成" });
     expect(form).toBeInTheDocument();
   });
-  test("空で送信した場合、入力を促すエラーメッセージが表示されること", async () => {
+  test("空で送信した場合、入力を促すエラーメッセージが表示される", async () => {
     const { container, getByRole, getByLabelText } = render(<EmptyPost />);
     await EmptyPost.play({ canvasElement: container });
     await waitFor(() => {
@@ -23,7 +27,7 @@ describe("src/components/organisms/PostForm/PostForm.test.tsx", () => {
       "著者を入力してください"
     );
   });
-  test("ユーザー編集の場合、初期値が入力されていること", async () => {
+  test("ユーザー編集の場合、初期値が入力されている", async () => {
     const { getByRole } = render(<EditUser />);
     const textbox = getByRole("form", { name: "投稿編集" });
     expect(textbox).toBeInTheDocument();

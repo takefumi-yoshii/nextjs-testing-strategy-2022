@@ -12,12 +12,11 @@ const { Default } = composeStories(stories);
 describe("src/components/templates/Post/Post.test.tsx", () => {
   setupMockServer(createUserHandler());
   const user = userEvent.setup();
-  test("main ランドマークを1つ識別できること", () => {
-    const { getByRole } = render(<Default />);
-    const main = getByRole("main");
-    expect(main).toBeInTheDocument();
+  test("Template である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeTemplate();
   });
-  test("編集ボタンを押下すると、編集画面に遷移すること", async () => {
+  test("編集ボタンを押下すると、編集画面に遷移する", async () => {
     const { getByRole } = render(<Default />);
     await user.click(getByRole("button", { name: "編集する" }));
     expect(singletonRouter).toMatchObject({ asPath: "/posts/1/edit" });

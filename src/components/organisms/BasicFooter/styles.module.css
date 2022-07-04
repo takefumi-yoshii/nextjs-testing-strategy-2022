@@ -2,3 +2,10 @@
   height: 120px;
   background-color: #f0f1f3;
 }
+
+.heading {
+  padding: 40px;
+  font-size: 12px;
+  text-align: center;
+  color: #b0b0b0;
+}

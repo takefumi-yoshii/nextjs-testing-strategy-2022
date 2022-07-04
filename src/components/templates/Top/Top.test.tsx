@@ -12,10 +12,9 @@ const { Default } = composeStories(stories);
 describe("src/components/templates/Top/Top.test.tsx", () => {
   setupMockServer(createUserHandler());
   const user = userEvent.setup();
-  test("main ランドマークを1つ識別できること", () => {
-    const { getByRole } = render(<Default />);
-    const main = getByRole("main");
-    expect(main).toBeInTheDocument();
+  test("Template である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeTemplate();
   });
   test.each([
     { name: "ユーザー一覧", asPath: "/users" },

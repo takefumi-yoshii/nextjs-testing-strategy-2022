@@ -7,11 +7,15 @@ const { Default, Disabled } = composeStories(stories);
 
 describe("src/components/atoms/Button/Button.test.tsx", () => {
   const options = { name: "送信する" };
-  test("[role=button]であること", () => {
+  test("Atom である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeAtom();
+  });
+  test("[role=button]である", () => {
     const { getByRole } = render(<Default />);
     expect(getByRole("button", options)).toBeInTheDocument();
   });
-  test("[disabled=true]であること", () => {
+  test("[disabled=true]である", () => {
     const { getByRole } = render(<Disabled />);
     expect(getByRole("button", options)).toBeDisabled();
   });

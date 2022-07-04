@@ -9,11 +9,15 @@ const { Default } = composeStories(stories);
 
 describe("src/components/organisms/BasicAside/BasicAside.test.tsx", () => {
   const user = userEvent.setup();
-  test("[role=complementary]であること", () => {
+  test("Organism である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeOrganism();
+  });
+  test("[role=complementary]である", () => {
     const { getByRole } = render(<Default />);
     expect(getByRole("complementary")).toBeInTheDocument();
   });
-  test("[role=navigation]を保持していること", () => {
+  test("[role=navigation]を保持している", () => {
     const { getByRole } = render(<Default />);
     expect(
       getByRole("navigation", { name: "メインナビゲーション" })
@@ -31,7 +35,7 @@ describe("src/components/organisms/BasicAside/BasicAside.test.tsx", () => {
       expect(singletonRouter).toMatchObject({ asPath });
     }
   );
-  test("「ログアウト」リンクを押下すると、トップ画面に遷移すること", async () => {
+  test("「ログアウト」リンクを押下すると、トップ画面に遷移する", async () => {
     const { getByRole } = render(<Default />);
     await user.click(getByRole("link", { name: "ログアウト" }));
     expect(window.location.href).toBe("http://localhost/");

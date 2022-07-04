@@ -11,17 +11,16 @@ const { Default } = composeStories(stories);
 
 describe("src/components/templates/Login/Login.test.tsx", () => {
   const user = userEvent.setup();
-  test("main ランドマークを1つ識別できること", () => {
-    const { getByRole } = render(<Default />);
-    const main = getByRole("main");
-    expect(main).toBeInTheDocument();
+  test("Template である", () => {
+    const { container } = render(<Default />);
+    expect(container).toBeTemplate();
   });
   describe("フォーム機能", () => {
     const email = "test.user_1@example.com";
     const password = "xxx-xxxxxxxxxx";
     const mock = jest.fn();
     const server = setupMockServer(postLoginHandler({ mock }));
-    test("ログインボタンを押下すると、ログインAPIが呼ばれること", async () => {
+    test("ログインボタンを押下すると、ログインAPIが呼ばれる", async () => {
       const { getByRole, getByLabelText } = render(<Default />);
       await user.type(getByRole("textbox", { name: "メールアドレス" }), email);
       await user.type(getByLabelText("パスワード"), password);
@@ -30,7 +29,7 @@ describe("src/components/templates/Login/Login.test.tsx", () => {
         expect(mock).toHaveBeenCalledWith({ email, password })
       );
     });
-    test("サーバーエラーが発生した時、ログアウトに失敗した旨が表示されること", async () => {
+    test("サーバーエラーが発生した時、ログアウトに失敗した旨が表示される", async () => {
       window.alert = jest.fn();
       server.use(postLoginHandler({ err: errors["INTERNAL_SERVER"] }));
       const { getByRole, getByLabelText } = render(<Default />);
