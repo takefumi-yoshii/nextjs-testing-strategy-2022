@@ -1,4 +1,8 @@
 const fetchPolifill = require("whatwg-fetch");
+const { setGlobalConfig } = require("@storybook/testing-react");
+const globalStorybookConfig = require("./.storybook/preview");
+
+setGlobalConfig(globalStorybookConfig);
 
 global.fetch = fetchPolifill.fetch;
 global.Request = fetchPolifill.Request;
