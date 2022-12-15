@@ -3,7 +3,7 @@
 First, run the redis server:
 
 ```bash
-doclker-compose up -d
+docker-compose up -d
 ```
 
 Next, run the development server:
