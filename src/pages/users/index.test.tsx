@@ -1,6 +1,7 @@
 import { errors } from "@/errors";
 import { getUsersHandler } from "@/services/api.example.com/users/mock";
 import { assertHasProps, gsspCtx, setupMockServer } from "@/tests/jest";
+import "@/tests/mock/crypto";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Page, { getServerSideProps } from "./index.page";

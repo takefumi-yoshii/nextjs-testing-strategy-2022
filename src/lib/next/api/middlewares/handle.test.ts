@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import { testApiHandler } from "@/tests/jest";
 import { handle } from "./handle";
 

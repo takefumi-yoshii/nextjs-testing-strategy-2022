@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import { errors, NotFoundError } from "@/errors";
 import { apiHandlerArgs, testApiHandler } from "@/tests/jest";
 import { combineHandlers } from "./combineHandlers";

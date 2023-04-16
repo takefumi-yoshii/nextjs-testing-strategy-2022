@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import { InvalidPathParamError } from "@/errors";
 import { num, str } from "./asserts";
 

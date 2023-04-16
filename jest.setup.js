@@ -5,13 +5,6 @@ global.Request = fetchPolifill.Request;
 global.Headers = fetchPolifill.Headers;
 global.Response = fetchPolifill.Response;
 
-const crypto = require("crypto");
-Object.defineProperty(global.self, "crypto", {
-  value: {
-    getRandomValues: (arr) => crypto.randomBytes(arr.length),
-  },
-});
-
 jest.mock("next/router", () => require("next-router-mock"));
 jest.mock("next/dist/client/router", () => require("next-router-mock"));
 

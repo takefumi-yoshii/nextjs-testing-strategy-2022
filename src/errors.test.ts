@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import { HttpError } from "@/errors";
 
 describe("src/errors.test.ts", () => {

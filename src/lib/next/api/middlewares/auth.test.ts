@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import { UnauthorizedError } from "@/errors";
 import { apiHandlerArgs } from "@/tests/jest";
 import { auth } from "./auth";

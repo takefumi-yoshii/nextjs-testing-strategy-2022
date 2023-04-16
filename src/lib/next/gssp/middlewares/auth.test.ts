@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import { gsspCtx } from "@/tests/jest";
 import { RedirectError } from "../error";
 import { auth } from "./auth";

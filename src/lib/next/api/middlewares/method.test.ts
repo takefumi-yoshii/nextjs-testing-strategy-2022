@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import { errors } from "@/errors";
 import { apiHandlerArgs } from "@/tests/jest";
 import { Method, methods } from "./methods";

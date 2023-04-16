@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import { errors } from "@/errors";
 import { setupMockServer } from "@/tests/jest";
 import { createPost } from ".";

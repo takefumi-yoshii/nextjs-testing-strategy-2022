@@ -5,6 +5,7 @@ import {
   usersFixture,
 } from "@/services/api.example.com/users/mock";
 import { setupMockServer, testApiHandler } from "@/tests/jest";
+import "@/tests/mock/crypto";
 import handler from "./index.api";
 
 describe("src/pages/api/users/index.test.ts", () => {

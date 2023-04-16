@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import { errors, NotFoundError } from "@/errors";
 import { AssertsError } from "@/lib/asserts";
 import { DataResponse } from "@/services/api/fetcher/type";

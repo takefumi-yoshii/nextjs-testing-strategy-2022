@@ -6,6 +6,7 @@ import {
   updatePostHandler,
 } from "@/services/api.example.com/posts/[id]/mock";
 import { setupMockServer, testApiHandler } from "@/tests/jest";
+import "@/tests/mock/crypto";
 import handler from "./[id].api";
 
 describe("src/pages/api/posts/[id].test.ts", () => {

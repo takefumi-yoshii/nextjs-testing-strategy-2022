@@ -7,6 +7,7 @@ import {
 } from "@/services/api.example.com/posts/mock";
 import { createUserHandler } from "@/services/api.example.com/users/mock";
 import { setupMockServer, testApiHandler } from "@/tests/jest";
+import "@/tests/mock/crypto";
 import handler from "./index.api";
 
 describe("src/pages/api/posts/index.test.ts", () => {

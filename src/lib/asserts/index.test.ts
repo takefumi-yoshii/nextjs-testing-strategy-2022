@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import { z, ZodError } from "zod";
 import { assertBoolean, assertBySchema, AssertsError, assertString } from ".";
 

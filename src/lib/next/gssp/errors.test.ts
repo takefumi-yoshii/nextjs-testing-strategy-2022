@@ -1,3 +1,6 @@
+/**
+ * @jest-environment node
+ */
 import { RedirectError } from "./error";
 
 describe("src/lib/next/gssp/errors.test.ts", () => {
