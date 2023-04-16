@@ -7,7 +7,9 @@ type Props = Err;
 export const Error = ({ message, status }: Props) => {
   return (
     <main>
-      <Head><title>{pageTitle("エラー")}</title></Head>
+      <Head>
+        <title>{pageTitle("エラー")}</title>
+      </Head>
       <h2>{status}</h2>
       <p>{message}</p>
     </main>

@@ -1,15 +1,15 @@
 import { updateUserHandler } from "@/services/api/users/[id]/mock";
+import { setupMockServer } from "@/tests/jest";
 import { composeStories } from "@storybook/testing-react";
 import "@testing-library/jest-dom";
 import { render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { getWorker } from "msw-storybook-addon";
 import singletonRouter from "next/router";
 import * as stories from "./UserEdit.stories";
 import { actualData, typeData } from "./UserEdit.stories";
 
 const { Default, SucceedPost, ServerError } = composeStories(stories);
-const server = getWorker();
+const server = setupMockServer();
 const user = userEvent.setup();
 
 describe("src/components/templates/UserEdit/UserEdit.test.tsx", () => {
@@ -29,6 +29,7 @@ describe("src/components/templates/UserEdit/UserEdit.test.tsx", () => {
       );
     });
     test("正常入力値で送信した場合、成功した旨が表示され、ユーザー詳細画面に遷移する", async () => {
+      server.use(...SucceedPost?.parameters?.msw.handlers)
       const { container, findByRole } = render(<SucceedPost />);
       await SucceedPost.play({ canvasElement: container });
       expect(await findByRole("alert")).toHaveTextContent(
@@ -37,6 +38,7 @@ describe("src/components/templates/UserEdit/UserEdit.test.tsx", () => {
       expect(singletonRouter).toMatchObject({ asPath: "/users/1" });
     });
     test("エラーが返ってきた場合、エラーが表示される", async () => {
+      server.use(...ServerError?.parameters?.msw.handlers)
       const { container, findByRole } = render(<ServerError />);
       await ServerError.play({ canvasElement: container });
       expect(await findByRole("alert")).toHaveTextContent(
